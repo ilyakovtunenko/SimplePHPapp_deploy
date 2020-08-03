@@ -21,6 +21,7 @@ pipeline{
             steps {
                 echo "================= start building image ================="
                 sh 'ansible --version' 
+                echo $pass_vesta
             }
         }
         }
