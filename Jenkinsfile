@@ -24,6 +24,6 @@ pipeline{
                 withCredentials([sshUserPrivateKey(credentialsId: "kovtunenko_saritasa_hosting", keyFileVariable: 'keyfile')]) {
                     echo '${keyfile}' 
                 }
-        }
+            }
         }
     }
