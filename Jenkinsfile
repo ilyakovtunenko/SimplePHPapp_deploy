@@ -21,7 +21,9 @@ pipeline{
             steps {
                 echo "================= start building image ================="
                 sh 'ansible --version' 
-                echo $pass_vesta
+                withCredentials([string(credentialsId: 'd0a70bfb-3861-44a9-bc5e-95289ed0bc28', variable: 'SECRET')]) {
+                    echo "My secret text is '${SECRET}'"
+                }
             }
         }
         }
