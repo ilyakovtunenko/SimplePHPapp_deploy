@@ -20,11 +20,10 @@ pipeline{
         stage("Deploy with the use Ansistrano ") {
             steps {
                 echo "================= start building image ================="
-                sh 'ansible --version' 
-                withCredentials([string(credentialsId: 'd0a70bfb-3861-44a9-bc5e-95289ed0bc28', variable: 'SECRET')]) {
-                    sh "echo '${SECRET}' | ansible-playbook deploy.yml --ask-pass"
+                sh 'ansible --version'
+                withCredentials([sshUserPrivateKey(credentialsId: "kovtunenko_saritasa_hosting", keyFileVariable: 'keyfile')]) {
+                    echo '${keyfile}' 
                 }
-            }
         }
         }
     }
