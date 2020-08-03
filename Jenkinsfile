@@ -22,7 +22,7 @@ pipeline{
                 echo "================= start building image ================="
                 sh 'ansible --version'
                 withCredentials([sshUserPrivateKey(credentialsId: "kovtunenko_saritasa_hosting", keyFileVariable: 'keyfile')]) {
-                    echo '${keyfile}' 
+                    sh 'ansible-playbook deploy.yml --private-key ${keyfile}'
                 }
             }
         }
