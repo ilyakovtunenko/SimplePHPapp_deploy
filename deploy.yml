@@ -5,6 +5,6 @@
     ansistrano_deploy_from: "{{ playbook_dir }}/site"
     ansistrano_deploy_to: "/home/kovtunenko/web/kovtunenko.saritasa-hosting.com/site"
     ansistrano_keep_releases: 3
-    ansistrano_deploy_via: "copy"
+    ansistrano_deploy_via: "copy_unarchive"
   roles:
     - { role: ansistrano.deploy }
