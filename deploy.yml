@@ -1,0 +1,10 @@
+---
+- name: Deploy SimplePHP on Vesta server
+  hosts: servers
+  vars:
+    ansistrano_deploy_from: "{{ playbook_dir }}/simplephpapp"
+    ansistrano_deploy_to: "/home/kovtunenko/web/kovtunenko.saritasa-hosting.com/site"
+    ansistrano_keep_releases: 3
+    ansistrano_deploy_via: "copy"
+  roles:
+    - { role: ansistrano.deploy }
