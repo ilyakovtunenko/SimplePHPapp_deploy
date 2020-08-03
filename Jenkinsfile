@@ -21,13 +21,11 @@ pipeline{
             steps {
                 echo "================= start building image ================="
                 sh 'ansible --version'
-                tar -cvzf site.tar.gz simplephpapp
-                
+                sh "tar -cvzf site.tar.gz simplephpapp"
+                sh "mkdir site"
+            
                 withCredentials([sshUserPrivateKey(credentialsId: "jenkins-ssh-credential", keyFileVariable: 'keyfile')]) {
                     sh 'ansible-playbook deploy.yml --private-key ${keyfile}'
-                }
-                sshagent(['jenkins-ssh-credential']) {
-                
                 }
             }
         }
